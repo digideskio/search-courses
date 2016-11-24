@@ -5,4 +5,5 @@ from . import views
 app_name = 'search'
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^task$',views.TaskCallView.as_view(), name='task'),
 ]
