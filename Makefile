@@ -6,3 +6,6 @@ run:
 
 clean:
 	@find . -name "*.pyc" -delete
+
+task:
+	@python manage.py process_tasks

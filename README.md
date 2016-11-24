@@ -9,4 +9,5 @@ Configurando:
 Executando:
 ===========
 - make run
+- make task
 
