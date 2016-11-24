@@ -35,3 +35,9 @@ class DataBase():
         except Exception:
             raise Exception
 
+    def get_all(self):
+        try:
+            return self.client.hscan_iter(self.HASH)
+        except Exception:
+            raise Exception
+
