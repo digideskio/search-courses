@@ -25,7 +25,7 @@ SECRET_KEY = '+7iryjzzg^d92w5itf3s@=!^_j)!w(*p%$wtp21-k$s^lbu4cp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['paloma-courses.herokuapp.com']
 
 
 # Application definition
