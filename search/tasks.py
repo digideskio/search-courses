@@ -5,7 +5,7 @@ from background_task import background
 from search.dbase import DataBase
 from search import settings
 
-@background(schedule=15)
+@background(schedule=60*20)
 def TaskSearchCourses():
     key = settings.KEY
     cx = settings.CX
