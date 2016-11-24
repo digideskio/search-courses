@@ -23,7 +23,7 @@ class IndexView(TemplateView):
                 }
             )
         print context
-        return {'context': context}
+        return {'context': context, 'count': len(context)}
 
 
 class TaskCallView(View):
