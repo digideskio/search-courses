@@ -15,7 +15,6 @@ class DataBase():
 
     def save(self, items):
         for item in items:
-            print "save"
             self._save(
                 item.get('title'),
                 item.get('formattedUrl')
