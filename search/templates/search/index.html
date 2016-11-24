@@ -11,13 +11,11 @@
 
 	<body>
 		<div>
-		  <h2>HelvetiList</h2>
-	    <ul>
-	    <li><a href="#">Zurich</a></li>
-	    <li><a href="#">Geneva</a></li>
-	    <li><a href="#">Winterthur</a></li>
-	    <li><a href="#">Lausanne</a></li>
-	    <li><a href="#">Lucerne</a></li>
+		  <h2>Cursos encontrados na internet</h2>
+		<ul>
+		{% for course in context %}
+		<li><a href="{{ course.address }}">{{ course.name }}</a></li>
+		{% endfor %}
 	  </ul>
 	  </div></li>
 	</ul></h>
