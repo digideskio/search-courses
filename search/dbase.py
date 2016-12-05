@@ -2,8 +2,24 @@
 
 import redis
 import json
+from pymongo import MongoClient
 from urlparse import urlparse
 from search import settings
+
+class MongoBase():
+    def __init__(self):
+        self.host = settings.PALOMA_DB_HOST
+        self.port = settings.PALOMA_DB_PORT
+        self.name = settings.PALOMA_DB_NAME
+        client = MongoClient(self.host, int(self.port))
+        dbname = client[self.name]
+        self.db = dbname['language_ingles']
+
+    def get(self, key):
+        num_courses = self.db.count({"url": key})
+        if num_courses > 0:
+            return True
+        return False
 
 class DataBase():
     def __init__(self):
@@ -14,6 +30,10 @@ class DataBase():
             password=settings.REDIS_PWD
         )
         self.HASH = 'courses'
+        self.db_paloma = MongoBase()
+
+    def check_db_paloma(self, key):
+        return self.db_paloma.get(key)
 
     def save(self, items):
         for item in items:
@@ -24,7 +44,7 @@ class DataBase():
 
     def _save(self, name, address):
         try:
-            if not self.client.hexists(self.HASH, str(name)):
+            if not self.client.hexists(self.HASH, str(name)) and not self.check_db_paloma(address):
                 self.client.hset(self.HASH, str(name), str(address))
         except Exception as Error:
             print "Dont save because %s" % Error
