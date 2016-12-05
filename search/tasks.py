@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests
 import logging
 
@@ -5,7 +7,7 @@ from background_task import background
 from search.dbase import DataBase
 from search import settings
 
-#  @background(schedule=60*20)
+@background(schedule=60*20)
 def TaskSearchCourses():
     querys = ["english%20online%20course", "curso%20ingles%20online", "curso%20online%20interativo"]
     key = settings.KEY
@@ -41,4 +43,4 @@ def TaskSearchCourses():
                     start,
                     response.status_code
                 )
-    #  TaskSearchCourses()
+    TaskSearchCourses()
