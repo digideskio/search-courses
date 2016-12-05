@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 import re
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View

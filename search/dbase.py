@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import redis
 import json
 from urlparse import urlparse
@@ -16,7 +18,7 @@ class DataBase():
     def save(self, items):
         for item in items:
             self._save(
-                item.get('title'),
+                item.get('title').encode("utf-8"),
                 item.get('formattedUrl')
             )
 
