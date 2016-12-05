@@ -14,7 +14,11 @@
 			<h2>Cursos encontrados na internet ({{ count }})</h2>
 		<ul>
 		{% for course in context %}
-		<li><a href="{{ course.address }}">{{ course.name }}</a></li>
+		<li>
+			<a id="black" href="{% url 'search:black' url=course.address name=course.name %}">x </a>
+			<a href="{{ course.address }}">{{ course.name }}</a>
+				
+		</li>
 		{% endfor %}
 	  </ul>
 	  </div></li>

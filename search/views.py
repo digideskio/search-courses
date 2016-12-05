@@ -5,8 +5,8 @@ import re
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 # Create your views here.
-from search.tasks import TaskSearchCourses
-from search.dbase import DataBase
+from search.tasks import Task
+from search.dbase import DataBase, MongoBase
 
 class IndexView(TemplateView):
     template_name = 'search/index.html'
@@ -31,6 +31,14 @@ class IndexView(TemplateView):
 
 class TaskCallView(View):
     def get(self, request, *args, **kwargs):
-        TaskSearchCourses()
+        Task().TaskSearchCourses()
         return redirect('search:index')
 
+
+class BlackListView(View):
+    def get(self, request, *args, **kwargs):
+        url = kwargs['url']
+        name = kwargs['name']
+        DataBase().remove(name)
+        DataBase().save_black(url)
+        return redirect('search:index')
